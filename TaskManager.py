@@ -7,7 +7,7 @@ class TaskManager:
         self.tasks = []
         self._id_count = 0
     def task_add(self, desc):
-        new_task = Task(self, self._id_count, desc)
+        new_task = Task(self._id_count, desc, "todo")
         self.tasks.append(new_task)
         self._id_count += 1
         return new_task
@@ -48,15 +48,24 @@ class TaskManager:
             json.dump([t.to_dict() for t in self.tasks], f, indent=2)
 
     def load_from_file(self, filename="tasks.json"):
+        from pathlib import Path
+        file_path = Path(filename)
+        
+        if not file_path.exists() or file_path.stat().st_size == 0:
+            # File does not exist or is empty, start fresh
+            self.tasks = []
+            self._id_count = 0
+            return
+
         try:
-            with open(filename, 'r') as f:
+            with file_path.open('r') as f:
                 data = json.load(f)
                 self.tasks = [Task.from_dict(d) for d in data]
-
                 if self.tasks:
-                    # find the largest number
                     self._id_count = max(t.id for t in self.tasks) + 1
 
-        except FileNotFoundError:
+        except json.JSONDecodeError:
+            # Corrupted file, reset
+            print(f"Warning: {filename} is corrupted. Starting fresh.")
             self.tasks = []
             self._id_count = 0

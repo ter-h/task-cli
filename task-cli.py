@@ -5,10 +5,7 @@ from TaskNotFoundError import TaskNotFoundError
 from TaskManager import TaskManager
 
 def main():
-    parser = argparse.ArgumentParse(
-        prog="Task CLI",
-        description="CLI to manage tasks"
-    )
+    parser = argparse.ArgumentParser(description="Task CLI")
     sub = parser.add_subparsers(dest="command")
 
     add_p = sub.add_parser("add")
@@ -33,7 +30,6 @@ def main():
     args = parser.parse_args()
     tasks = TaskManager()
     tasks.load_from_file()
-
     try:
         if args.command == "add":
             t = tasks.task_add(args.description)

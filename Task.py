@@ -1,5 +1,4 @@
 from datetime import datetime
-
 class Task:
     def __init__(self, id, description, status, createdAt=None, updatedAt=None):
         self.id = id
@@ -8,15 +7,15 @@ class Task:
         self.createdAt = createdAt or datetime.now()
         self.updatedAt = updatedAt or datetime.now()
 
-    def task_update(self, new_desc):
-        self.description = new_desc
+    def update_desc(self, new_desc):
+        self. description = new_desc
         self.updatedAt = datetime.now()
 
-    def task_mark_in_progress(self):
+    def mark_in_progress(self):
         self.status = "in-progress"
         self.updatedAt = datetime.now()
 
-    def task_mark_done(self):
+    def mark_done(self):
         self.status = "done"
         self.updatedAt = datetime.now()
 
