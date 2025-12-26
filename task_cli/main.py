@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse
-from TaskManager import TaskManager
-from TaskNotFoundError import TaskNotFoundError
+from task_cli.TaskManager import TaskManager
+from task_cli.TaskNotFoundError import TaskNotFoundError
 
 def main():
     parser = argparse.ArgumentParser(

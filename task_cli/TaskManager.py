@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
-from Task import Task
-from TaskNotFoundError import TaskNotFoundError
+from task_cli.Task import Task
+from task_cli.TaskNotFoundError import TaskNotFoundError
 
 class TaskManager:
     def __init__(self):
