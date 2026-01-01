@@ -41,8 +41,8 @@ def main():
     list_p.add_argument("status", nargs="?", help="Optional status filter")
     list_p.add_argument(
         "-s", "--sort",
-        choices=["status", "createdAt", "name", "lastUpdated", "id"],
-        help="Sort tasks by status, date, id, or name"
+        choices=["status", "createdAt", "description", "lastUpdated", "id"],
+        help="Sort tasks by status, date, id, or description"
     )
 
     args = parser.parse_args()
@@ -82,7 +82,7 @@ def main():
             elif args.sort == "date":
                 task_list.sort(key=lambda t: t.createdAt)
 
-            elif args.sort == "name":
+            elif args.sort == "description":
                 task_list.sort(key=lambda t: t.description.lower())
             
             elif args.sort == "id":
