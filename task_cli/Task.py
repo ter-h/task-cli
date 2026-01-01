@@ -10,6 +10,10 @@ class Task:
     def update_desc(self, new_desc):
         self. description = new_desc
         self.updatedAt = datetime.now()
+    
+    def mark_todo(self):
+        self.status = "todo"
+        self.updatedAt = datetime.now()
 
     def mark_in_progress(self):
         self.status = "in-progress"

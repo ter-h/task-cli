@@ -33,12 +33,18 @@ class TaskManager:
 
     def task_mark_in_progress(self, id):
         task = self._find_task(id)
-        task.task_mark_in_progress()
+        task.mark_in_progress()
         self.save_to_file()
+
+    def task_mark_todo(self, id):
+        task = self._find_task(id)
+        task.mark_todo()
+        self.save_to_file()
+    
 
     def task_mark_done(self, id):
         task = self._find_task(id)
-        task.task_mark_done()
+        task.mark_done()
         self.save_to_file()
 
     def task_list(self, status=None):
