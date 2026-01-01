@@ -9,6 +9,9 @@ description = "A simple task CLI"
 authors = [{ name="Terrance Ho" }]
 readme = "README.md"
 requires-python = ">=3.8"
+dependencies = [
+    "tabulate>=0.9.0"
+]
 
 [project.scripts]
 task-cli = "task_cli.main:main"
