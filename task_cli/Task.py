@@ -7,7 +7,7 @@ class Task:
         self.createdAt = createdAt or datetime.now()
         self.updatedAt = updatedAt or datetime.now()
 
-    def update_desc(self, new_desc):
+    def task_update(self, new_desc):
         self. description = new_desc
         self.updatedAt = datetime.now()
     
